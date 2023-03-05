@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        tools:context=".ui.fragment.movies.MoviesFragment">
+
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="No Movies Available"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/edt_bg_selector"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="8dp"
+            android:elevation="8dp"
+            android:focusableInTouchMode="true"
+            android:hint="Search movie"
+            android:inputType="text"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:padding="9dp"
+            android:shadowColor="@color/blue"
+            app:layout_constraintEnd_toStartOf="@id/imgMenu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <ImageView
+            android:id="@+id/imgMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/menu"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/etSearch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/etSearch"
+            app:layout_constraintTop_toTopOf="@id/etSearch"
+            app:layout_constraintWidth_percent="0.2"
+            app:tint="@color/blue" />
+
+        <HorizontalScrollView
+            android:id="@+id/scrollBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@+id/etSearch">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:chipSpacingHorizontal="4dp"
+                app:selectionRequired="false"
+                app:singleLine="true"
+                app:singleSelection="true" />
+
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMovies"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintTop_toBottomOf="@id/scrollBar"
+            tools:itemCount="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_movies" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
